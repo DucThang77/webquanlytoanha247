@@ -5,6 +5,7 @@ export const site = {
 	legalName: 'Công ty Cổ phần Đầu tư Phát triển và Quản lý Bất động sản Hà Nội',
 	domain: 'quanlytoanha247.com',
 	url: 'https://quanlytoanha247.com',
+	slogan: 'Chất lượng từ tâm',
 	tagline: 'Quản lý vận hành tòa nhà chuẩn quốc tế, túc trực 24/7',
 	description:
 		'HADREAMCO - Công ty Cổ phần Đầu tư Phát triển và Quản lý Bất động sản Hà Nội. Dịch vụ quản lý vận hành tòa nhà văn phòng, chung cư, trung tâm thương mại theo chuẩn quản trị của Mỹ và tinh thần dịch vụ Nhật Bản. Túc trực 24/7, báo cáo minh bạch.',

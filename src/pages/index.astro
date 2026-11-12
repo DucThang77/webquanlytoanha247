@@ -4,42 +4,34 @@ import { site } from '../data/site';
 
 const services = [
 	{
-		icon: '🏢',
 		title: 'Quản lý vận hành tổng thể',
 		text: 'Một đầu mối chịu trách nhiệm toàn bộ tòa nhà: nhân sự, nhà thầu, ngân sách, quy chế và quan hệ với cư dân, khách thuê.',
 	},
 	{
-		icon: '⚙️',
 		title: 'Kỹ thuật và bảo trì phòng ngừa',
 		text: 'Điện, nước, điều hòa, thang máy, PCCC được bảo trì theo lịch định kỳ, có nhật ký thiết bị, không đợi hỏng mới sửa.',
 	},
 	{
-		icon: '🛡️',
 		title: 'An ninh và an toàn',
 		text: 'Kiểm soát ra vào, giám sát camera, tuần tra theo tuyến, diễn tập PCCC và kịch bản ứng phó sự cố cho từng tòa nhà.',
 	},
 	{
-		icon: '✨',
 		title: 'Vệ sinh và cảnh quan',
 		text: 'Làm sạch theo khu vực và tần suất, kiểm tra chéo bằng bảng chấm điểm, chăm sóc cây xanh, kiểm soát côn trùng.',
 	},
 	{
-		icon: '🤝',
 		title: 'Chăm sóc cư dân và khách thuê',
 		text: 'Lễ tân, tiếp nhận yêu cầu đa kênh, cam kết thời gian phản hồi, khảo sát mức độ hài lòng định kỳ.',
 	},
 	{
-		icon: '📊',
 		title: 'Tài chính và báo cáo',
 		text: 'Lập ngân sách vận hành năm, thu phí, kiểm soát chi, báo cáo hàng tháng rõ từng khoản cho chủ đầu tư và ban quản trị.',
 	},
 	{
-		icon: '🌱',
 		title: 'Quản lý năng lượng',
 		text: 'Theo dõi tiêu thụ điện nước, đề xuất giải pháp tiết kiệm, hỗ trợ lộ trình công trình xanh và báo cáo ESG.',
 	},
 	{
-		icon: '📋',
 		title: 'Tư vấn tiền vận hành',
 		text: 'Tham gia từ giai đoạn thiết kế và bàn giao: rà soát công năng, lập quy trình, dự toán phí quản lý, tiếp nhận tòa nhà.',
 	},
@@ -104,15 +96,21 @@ const faqs = [
 
 <Layout>
 	<section class="hero">
+		<div class="hero-art" aria-hidden="true">
+			<span class="ring ring-1"></span>
+			<span class="ring ring-2"></span>
+			<span class="dot"></span>
+			<img src="/logo-mark.jpg" alt="" width="300" height="300" />
+		</div>
 		<div class="container hero-inner">
-			<p class="eyebrow">Quản lý vận hành bất động sản</p>
+			<p class="eyebrow">{site.slogan} · Quản lý vận hành bất động sản</p>
 			<h1>Tòa nhà vận hành êm, tài sản giữ giá, cư dân an tâm</h1>
 			<p class="lead">
 				{site.name} quản lý tòa nhà theo kỷ luật quản trị của Mỹ và tinh thần dịch vụ của Nhật Bản.
 				Túc trực 24 giờ mỗi ngày, mọi con số đều có báo cáo.
 			</p>
 			<div class="hero-cta">
-				<a class="btn btn-gold" href="#lien-he">Yêu cầu khảo sát miễn phí</a>
+				<a class="btn btn-lime" href="#lien-he">Yêu cầu khảo sát miễn phí</a>
 				{site.phone && <a class="btn btn-outline" href={`tel:${site.phone.replace(/\s/g, '')}`}>Gọi {site.phone}</a>}
 				<a class="btn btn-outline" href="#dich-vu">Xem dịch vụ</a>
 			</div>
@@ -134,9 +132,9 @@ const faqs = [
 			</header>
 			<div class="grid grid-4">
 				{
-					services.map((s) => (
+					services.map((s, i) => (
 						<article class="card">
-							<div class="card-icon" aria-hidden="true">{s.icon}</div>
+							<div class="card-no" aria-hidden="true">{String(i + 1).padStart(2, '0')}</div>
 							<h3>{s.title}</h3>
 							<p>{s.text}</p>
 						</article>
@@ -192,7 +190,7 @@ const faqs = [
 		</div>
 	</section>
 
-	<section id="quy-trinh" class="section section-navy">
+	<section id="quy-trinh" class="section section-green">
 		<div class="container">
 			<header class="section-head">
 				<p class="eyebrow">Quy trình</p>
@@ -256,7 +254,7 @@ const faqs = [
 					</select>
 				</label>
 				<label>Nội dung cần tư vấn<textarea name="message" rows="4"></textarea></label>
-				<button class="btn btn-gold" type="submit">Gửi yêu cầu</button>
+				<button class="btn btn-primary" type="submit">Gửi yêu cầu</button>
 				<p class="form-note">Bấm gửi sẽ mở ứng dụng email của bạn với nội dung đã điền sẵn.</p>
 			</form>
 		</div>
@@ -286,24 +284,72 @@ const faqs = [
 		letter-spacing: 0.12em;
 		font-size: 0.8rem;
 		font-weight: 700;
-		color: var(--gold-dark);
+		color: var(--green-600);
 		margin-bottom: 10px;
 	}
 	.hero {
-		background:
-			linear-gradient(120deg, rgba(11, 37, 69, 0.97), rgba(19, 49, 92, 0.9)),
-			repeating-linear-gradient(90deg, transparent 0 58px, rgba(255, 255, 255, 0.05) 58px 60px),
-			repeating-linear-gradient(0deg, transparent 0 58px, rgba(255, 255, 255, 0.05) 58px 60px), var(--navy);
-		color: #dbe4f0;
+		position: relative;
+		overflow: hidden;
+		background: linear-gradient(135deg, var(--green-900) 0%, var(--green-700) 55%, var(--green-600) 100%);
+		color: #e4f1e2;
 		padding: 96px 0 72px;
 	}
+	.hero-inner {
+		position: relative;
+		z-index: 1;
+	}
+	@media (min-width: 1081px) {
+		.hero-inner > :not(.hero-points) {
+			max-width: 640px;
+		}
+	}
+	/* Họa tiết hình tròn theo phong cách hồ sơ năng lực */
+	.hero-art {
+		position: absolute;
+		top: 50%;
+		right: max(24px, calc((100vw - 1140px) / 2));
+		width: 380px;
+		height: 380px;
+		transform: translateY(-58%);
+	}
+	.hero-art img {
+		position: absolute;
+		inset: 40px;
+		width: 300px;
+		height: 300px;
+		border-radius: 50%;
+		border: 8px solid #fff;
+		box-shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
+	}
+	.ring {
+		position: absolute;
+		border-radius: 50%;
+		border: 2px solid var(--lime);
+	}
+	.ring-1 {
+		inset: 0;
+		opacity: 0.8;
+	}
+	.ring-2 {
+		inset: -70px;
+		border-color: rgba(255, 255, 255, 0.16);
+	}
+	.dot {
+		position: absolute;
+		width: 46px;
+		height: 46px;
+		border-radius: 50%;
+		background: var(--lime);
+		right: -6px;
+		bottom: 48px;
+	}
 	.hero .eyebrow {
-		color: var(--gold);
+		color: var(--lime);
 	}
 	.hero h1 {
 		color: #fff;
-		font-size: clamp(2rem, 4.6vw, 3.4rem);
-		max-width: 18ch;
+		font-size: clamp(2rem, 4.2vw, 3.2rem);
+		max-width: 17ch;
 	}
 	.lead {
 		font-size: 1.15rem;
@@ -326,7 +372,7 @@ const faqs = [
 	}
 	.hero-points strong {
 		display: block;
-		color: #fff;
+		color: var(--lime-soft);
 		font-size: 1.35rem;
 	}
 	.hero-points span {
@@ -338,16 +384,16 @@ const faqs = [
 	.section-soft {
 		background: var(--bg-soft);
 	}
-	.section-navy {
-		background: var(--navy);
-		color: #c8d3e3;
+	.section-green {
+		background: linear-gradient(135deg, var(--green-700), var(--green-900));
+		color: #d9ead9;
 	}
-	.section-navy h2,
-	.section-navy h3 {
+	.section-green h2,
+	.section-green h3 {
 		color: #fff;
 	}
-	.section-navy .eyebrow {
-		color: var(--gold);
+	.section-green .eyebrow {
+		color: var(--lime);
 	}
 	.section-head {
 		max-width: 720px;
@@ -382,7 +428,8 @@ const faqs = [
 		transition: box-shadow 0.15s, transform 0.15s;
 	}
 	.card:hover {
-		box-shadow: 0 10px 28px rgba(11, 37, 69, 0.1);
+		box-shadow: 0 12px 30px rgba(16, 106, 57, 0.14);
+		border-color: var(--lime);
 		transform: translateY(-2px);
 	}
 	.card h3 {
@@ -393,12 +440,24 @@ const faqs = [
 		font-size: 0.95rem;
 		margin: 0;
 	}
-	.card-icon {
-		font-size: 1.8rem;
-		margin-bottom: 12px;
+	.card-no {
+		width: 52px;
+		height: 52px;
+		border-radius: 50%;
+		display: grid;
+		place-items: center;
+		font-weight: 800;
+		font-size: 1.1rem;
+		color: #fff;
+		background: linear-gradient(160deg, var(--green-500), var(--green-700));
+		box-shadow: 0 0 0 5px rgba(151, 203, 103, 0.28);
+		margin-bottom: 18px;
+	}
+	.grid-4 .card:nth-child(even) .card-no {
+		background: linear-gradient(160deg, var(--green-600), var(--green-900));
 	}
 	.card-line {
-		border-left: 4px solid var(--gold);
+		border-left: 4px solid var(--lime);
 	}
 	.standard {
 		background: #fff;
@@ -408,7 +467,7 @@ const faqs = [
 	}
 	.tag {
 		display: inline-block;
-		background: var(--navy);
+		background: var(--green-700);
 		color: #fff;
 		font-size: 0.78rem;
 		font-weight: 700;
@@ -432,7 +491,7 @@ const faqs = [
 		content: '✓';
 		position: absolute;
 		left: 0;
-		color: var(--gold-dark);
+		color: var(--green-600);
 		font-weight: 700;
 	}
 	.steps {
@@ -444,15 +503,21 @@ const faqs = [
 		gap: 24px;
 	}
 	.steps li {
-		border-top: 2px solid var(--gold);
-		padding-top: 18px;
+		border-top: 2px solid rgba(151, 203, 103, 0.55);
+		padding-top: 22px;
 	}
 	.step-no {
-		display: block;
-		color: var(--gold);
-		font-weight: 700;
-		font-size: 1.5rem;
-		margin-bottom: 6px;
+		display: grid;
+		place-items: center;
+		width: 54px;
+		height: 54px;
+		border-radius: 50%;
+		background: #fff;
+		color: var(--green-700);
+		font-weight: 800;
+		font-size: 1.15rem;
+		box-shadow: 0 0 0 5px rgba(151, 203, 103, 0.45);
+		margin-bottom: 16px;
 	}
 	.steps h3 {
 		font-size: 1.08rem;
@@ -471,8 +536,11 @@ const faqs = [
 	.faq summary {
 		cursor: pointer;
 		font-weight: 600;
-		color: var(--navy);
+		color: var(--green-700);
 		font-size: 1.05rem;
+	}
+	.faq summary::marker {
+		color: var(--green-500);
 	}
 	.faq p {
 		margin: 12px 0 0;
@@ -509,7 +577,7 @@ const faqs = [
 	.form textarea {
 		font: inherit;
 		padding: 11px 12px;
-		border: 1px solid #cfd6e0;
+		border: 1px solid #cfd8cf;
 		border-radius: 8px;
 		width: 100%;
 		background: #fff;
@@ -517,13 +585,18 @@ const faqs = [
 	.form input:focus,
 	.form select:focus,
 	.form textarea:focus {
-		outline: 2px solid var(--gold);
+		outline: 2px solid var(--green-500);
 		border-color: transparent;
 	}
 	.form-note {
 		font-size: 0.82rem;
 		color: var(--muted);
 		margin: 0;
+	}
+	@media (max-width: 1080px) {
+		.hero-art {
+			display: none;
+		}
 	}
 	@media (max-width: 980px) {
 		.grid-4,
