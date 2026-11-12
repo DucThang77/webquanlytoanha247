@@ -1,0 +1,19 @@
+{
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"compatibility_date": "2026-11-10",
+	"compatibility_flags": ["global_fetch_strictly_public"],
+	"name": "webquanlytoanha247",
+	"main": "@astrojs/cloudflare/entrypoints/server",
+	"assets": {
+		"directory": "./dist",
+		"binding": "ASSETS"
+	},
+	// Tên miền riêng: cần quanlytoanha247.com đã nằm trong tài khoản Cloudflare
+	"routes": [
+		{ "pattern": "quanlytoanha247.com", "custom_domain": true },
+		{ "pattern": "www.quanlytoanha247.com", "custom_domain": true }
+	],
+	"observability": {
+		"enabled": true
+	}
+}
